@@ -2,6 +2,7 @@
 
 # resource files
 /resources
+/archives
 
 # drafts
 *.docx
