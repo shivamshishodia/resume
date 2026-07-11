@@ -1,0 +1,151 @@
+% Compile with: tectonic Shivam_Shishodia_Resume.tex
+\documentclass[10pt,a4paper]{article}
+
+\usepackage[a4paper,left=0.50in,right=0.50in,top=0.36in,bottom=0.46in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[sfdefault,lining]{carlito}
+\usepackage{xcolor}
+\usepackage[hidelinks,unicode]{hyperref}
+\usepackage{enumitem}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{microtype}
+\usepackage{iftex}
+
+% pdfTeX needs an explicit Unicode map; XeTeX/Tectonic emits Unicode natively.
+\ifPDFTeX
+  \input{glyphtounicode}
+  \pdfgentounicode=1
+\fi
+\ifXeTeX
+  % Embed logical Unicode text spans even when the visual font uses CID glyphs.
+  \XeTeXgenerateactualtext=1
+\fi
+
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+\setlength{\emergencystretch}{1em}
+\hyphenpenalty=10000
+\renewcommand{\familydefault}{\sfdefault}
+\AtBeginDocument{\fontsize{11.15pt}{13.55pt}\selectfont}
+
+\newcommand{\resumesection}[1]{%
+  \vspace{5.8pt}%
+  {\fontsize{11.65pt}{13pt}\selectfont\bfseries\MakeUppercase{#1}}\par
+  \vspace{2.8pt}%
+  {\color{black!70}\hrule height 0.45pt}%
+  \vspace{6.2pt}%
+}
+
+\newcommand{\twocol}[2]{%
+  \noindent\begin{tabularx}{\textwidth}{@{}X>{\raggedleft\arraybackslash}p{2.15in}@{}}
+    #1 & #2
+  \end{tabularx}%
+}
+
+\newcommand{\company}[3]{%
+  \twocol{%
+    {\fontsize{11.8pt}{13.5pt}\selectfont\textbf{#1}}%
+    \hspace{0.45em}%
+    {\fontsize{10.8pt}{13.5pt}\selectfont
+     \color{black!65}\textbar\ #2}%
+  }{\textit{#3}}\par
+  \vspace{0.6pt}%
+  {\color{black!25}\hrule height 0.35pt}%
+  \vspace{2.2pt}%
+}
+
+\newcommand{\role}[2]{%
+  \twocol{\textit{#1}}{\textit{#2}}\par
+  \vspace{2.4pt}%
+}
+
+\newcommand{\project}[2]{\textbf{#1} (#2)\par\vspace{2.0pt}}
+\newcommand{\contactsep}{%
+  \hspace{0.65em}%
+  \textcolor{black!40}{\textbar}%
+  \hspace{0.65em}%
+}
+
+\begin{document}
+
+\begin{center}
+  {\fontsize{24pt}{27pt}\selectfont Shivam Shishodia}\par
+  \vspace{2pt}
+  {\fontsize{9.5pt}{11.4pt}\selectfont
+    \href{tel:+917073353393}{(+91) 7073353393}
+    \contactsep
+    \href{mailto:shivam@shishodia.com}{shivam@shishodia.com}
+    \contactsep
+    \href{https://shishodia.com}{shishodia.com}
+    \contactsep
+    \href{https://www.linkedin.com/in/shivam-shishodia}{LinkedIn: shivam-shishodia}
+    \contactsep
+    \href{https://github.com/shivamshishodia}{GitHub: shivamshishodia}
+  }
+\end{center}
+\vspace{-12pt}
+
+\resumesection{Education}
+
+\twocol{\textbf{Computer Science and Engineering (Bachelor of Technology)}}{July 2018}\par
+\twocol{Manipal University Jaipur}{\textbf{CGPA 9.21}}\par
+\vspace{2pt}
+\twocol{\textbf{Computer Science Elective (with PCM)}}{March 2014}\par
+\twocol{Navy Children School (Goa)}{10th \textbf{9.8 CGPA} - 12th \textbf{90.8}}\par
+
+\resumesection{Skills}
+
+\begin{tabularx}{\textwidth}{@{}>{\bfseries}p{1.85in}X@{}}
+Core Skills & Java (Core Java, Spring, Spring Boot), SQL (PostgreSQL) \\
+Hands-on & JavaScript (Angular), NoSQL (MongoDB), Python (Flask) \\
+Cloud and DevOps & Kubernetes, Docker, Oracle Cloud (OCI) \\
+Tools and Integrations & Kafka, RabbitMQ, Spring Cloud, Maven, Git
+\end{tabularx}
+
+\resumesection{Work Experience}
+
+\company{Oracle}{Oracle Cloud Infrastructure (OCI) - Log Analytics}{Bengaluru, India (Hybrid)}
+\role{Senior Software Developer}{Oct 2022 - Present}
+\project{Kafka-Based Real-Time Ingestion and Aggregation}{Core Java, Springboot, \textbf{Kafka Streams}}
+Developed a high-throughput framework \textbf{capable of processing 12,000 requests/second (1 billion/day theoretical capacity) with 80 millisecond latency per request} across a 9-node instance pool and 3-node Kafka cluster, including \textbf{idempotency checks with 24-hour retention}. The implementation also includes a load-aware custom Kafka partitioner which maintains a \textbf{dynamic partition mapping to balance load} and prevent partition hotspots.
+
+\vspace{2pt}
+Implemented a \textbf{Kafka Streams-based aggregation service} supporting time, size, and count-based batching, \textbf{reducing database and object storage operations by 90 percentage} and improving downstream processing. Implemented \textbf{dead letter queue-based failure handling} for resilient message processing.
+
+\vspace{7.4pt}
+\company{Dell}{Dell Digital Supply Chain}{Bengaluru, India}
+\role{Senior Software Engineer}{July 2018 - Oct 2022}
+\project{Quote Deal Planning}{Springboot, RabbitMQ}
+Developed real-time RabbitMQ-based microservices to \textbf{process the high volume of sales records (8k/hour)}. Improved robustness by handling points of failures, and \textbf{increased data accuracy and integrity to 98 percent}. Led a team of four members to deliver 5 microservices for large order shipments, \textbf{improving system performance by 85 percent within a quarter}. Enabling zero downtime using blue-green deployment. Integrated Service Registry, Config Server, Credhub and made microservices 12-factor compliant.
+
+\vspace{5.0pt}
+\project{Workflow Engine}{Springboot, PostgreSQL}
+Implemented a Free-marker and Quartz based microservice in a span of two sprints leading 2 software engineers from Austin, United States. Developed APIs were integrated with two applications (SNOP workflow, Quote Deal Planning) with more in the pipeline, \textbf{saving over \$100k per year in expenditure} due to Pega and Flowable licenses.
+
+\vspace{5.0pt}
+\project{Material Reservation}{Springboot, Angular, RabbitMQ}
+Single-handedly developed the core microservice for MR \textbf{designed to process \$10 million worth of large order quotes} for Dell's strategic customers. The RabbitMQ feeds generated serve as the true source of information for downstream applications (FOE, BOSS, DPE) \textbf{reducing order process time by 60 percent}. Worked cross-functionally with engineering teams and \textbf{collaborated with business and product leadership} to define product plans and strategy.
+
+\vspace{7.4pt}
+\company{Dell}{Dell Digital Supply Chain}{Bengaluru, India}
+\role{Software Engineer Intern}{Jan 2018 - May 2018}
+\project{EOL Audit Automation, Headcount Tracker}{Python, Flask}
+Designed and developed a Python-based automated task capable of \textbf{saving 5,992 man-hours per year} for the DCE Content Operations team. The codebase is deployed as a core application that \textbf{saves 5,880 man-hours per year processing EOL requests}. The project was awarded a 10/10 grade point and is actively used in production to date.
+
+\resumesection{Notable Achievements}
+
+\begin{itemize}[leftmargin=14.5pt,label=\textbullet,itemsep=1.6pt,topsep=0pt,parsep=0pt,partopsep=0pt]
+  \raggedright
+  \item \textbf{2 Spot Awards at Oracle} for contributions towards Kubernetes Resource Discovery and Load-Aware Dynamic Partitioner features (June 2025).
+  \item \textbf{Dell's Vice President Fiscal Year-End Individual Recognition} by Ramesh Jampula, Vice President and CIO APJ Region, Global Supply Chain Management, Dell (January 2021).
+  \item \textbf{3 Bravo awards, 1 Cheer award, 10 Shoutout awards,} and \textbf{6 Applause awards} in total, awarded by 3 Principal Software Engineers, 2 Senior Advisors, 2 Managers, and 1 Director at an individual level.
+  \item \textbf{Open Market API Contributions:} Generic workflow APIs for code reusability. Employee APIs for quick access to several interlocking applications visioned to be \textbf{used by Dell IT space (20+ applications)}. Password reset custom tool for one-tap password reset for multiple microservices \textbf{cutting down the effort required for this activity by 90 percent}.
+  \item \textbf{3-time Information Technology Development Program Rockstar} for contributions towards ITDP committee (2-year program).
+  \item \textbf{Chapter~Officer,~ACM} (Association for Computing Machinery): \textbf{Led over 250 students}, training them for competitive programming and industry-level best practices.
+  \item \textbf{Top 5 percent of the batch:} Proven academic track record in Computer Science and Engineering program with 9.21 CGPA.
+\end{itemize}
+
+\end{document}
